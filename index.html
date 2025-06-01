@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego: Adivina el Número</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🎯 Adivina el Número (1 a 100)</h1>
+
+  <form id="formulario">
+    <input type="number" id="inputNumero" min="1" max="100" placeholder="Introduce un número..." required>
+    <button type="submit">Adivinar</button>
+  </form>
+
+  <div id="mensaje" class="mensaje"></div>
+
+  <p><strong>Intentos:</strong> <span id="contador">0</span> / 10</p>
+
+  <p><strong>Historial:</strong></p>
+  <ul id="historial"></ul>
+
+  <button id="reiniciar">Reiniciar juego</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
