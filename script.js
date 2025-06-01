@@ -1,80 +1,80 @@
-// Genera número aleatorio entre 1 y 100
-let numeroSecreto = Math.floor(Math.random() * 100) + 1;
+// Generates random number between 1 and 100
+let numberSecret = Math.floor(Math.random() * 100) + 1;
 
-// Inicializa variables
-let intentos = 0;
-const maxIntentos = 10;
-let juegoTerminado = false;
-let historialIntentos = [];
+// Initialize variables
+let attempts = 0;
+const maxAttempts = 10;
+let gameFinished = false;
+let recordAttempts = [];
 
-// Referencias al DOM
-const formulario = document.getElementById("formulario");
-const inputNumero = document.getElementById("inputNumero");
-const mensaje = document.getElementById("mensaje");
-const contador = document.getElementById("contador");
-const listaHistorial = document.getElementById("historial");
-const botonReiniciar = document.getElementById("reiniciar");
+// References to the DOM
+const form = document.getElementById("formulario");
+const inputNumber = document.getElementById("inputNumero");
+const message = document.getElementById("mensaje");
+const counter = document.getElementById("contador");
+const listRecord = document.getElementById("historial");
+const buttonRestart = document.getElementById("reiniciar");
 
-// Evento al enviar el formulario
-formulario.addEventListener("submit", function(event) {
+// Event when submitting the form
+form.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  if (juegoTerminado) return;
+  if (gameFinished) return;
 
-  const numeroUsuario = parseInt(inputNumero.value);
-  if (isNaN(numeroUsuario) || numeroUsuario < 1 || numeroUsuario > 100) {
-    mostrarMensaje("Introduce un número válido entre 1 y 100", "error");
+  const numberUser = parseInt(inputNumero.value);
+  if (isNaN(numberUser) || numberUser < 1 || numberUser > 100) {
+    showMessage("Enter a valid number between 1 and 100", "error");
     return;
   }
 
-  intentos++;
+  attempts++;
   contador.textContent = intentos;
-  historialIntentos.push(numeroUsuario);
-  actualizarHistorial();
+  recordAttempts.push(numberUser);
+  updateRecord();
 
-  if (numeroUsuario === numeroSecreto) {
-    mostrarMensaje(`¡Correcto! El número era ${numeroSecreto}.`, "exito");
-    juegoTerminado = true;
-  } else if (numeroUsuario < numeroSecreto) {
-    mostrarMensaje("Demasiado bajo...", "error");
+  if (numberUser === numberSecret) {
+    showMessage(`Correct! The number was ${numeroSecreto}.`, "success");
+    gameFinished = true;
+  } else if (numberUser < numberSecret) {
+    showMessage("Too low...", "error");
   } else {
-    mostrarMensaje("Demasiado alto...", "error");
+    showMessage("Too high...", "error");
   }
 
-  if (intentos >= maxIntentos && numeroUsuario !== numeroSecreto) {
-    mostrarMensaje(`Has perdido. El número era ${numeroSecreto}.`, "error");
-    juegoTerminado = true;
+  if (attempts >= maxAttempts && numberUser !== numberSecret) {
+    showMessage(`You lost. The number was ${numberSecret}.`, "error");
+    gameFinished = true;
   }
 
-  inputNumero.value = "";
+  inputNumber.value = "";
 });
 
-// Mostrar mensaje con clase según tipo
-function mostrarMensaje(texto, tipo) {
-  mensaje.textContent = texto;
-  mensaje.className = `mensaje ${tipo}`;
+// Display message with class according to type
+function showMessage(text, type) {
+  message.textContent = text;
+  message.className = `message ${type}`;
 }
 
-// Mostrar historial de intentos en lista <ul>
-function actualizarHistorial() {
-  listaHistorial.innerHTML = "";
-  historialIntentos.forEach((num, index) => {
+// Show attempt history in list <ul>
+function updateRecord() {
+  listRecord.innerHTML = "";
+  recordAttempts.forEach((num, index) => {
     const li = document.createElement("li");
-    li.textContent = `Intento ${index + 1}: ${num}`;
-    listaHistorial.appendChild(li);
+    li.textContent = `Attempt ${index + 1}: ${num}`;
+    listRecord.appendChild(li);
   });
 }
 
-// Reiniciar el juego
-botonReiniciar.addEventListener("click", function() {
-  numeroSecreto = Math.floor(Math.random() * 100) + 1;
-  intentos = 0;
-  juegoTerminado = false;
-  historialIntentos = [];
+// Restart the game
+buttonRestart.addEventListener("click", function() {
+  numberSecret = Math.floor(Math.random() * 100) + 1;
+  attempts = 0;
+  gameFinished = false;
+  recordAttempts = [];
 
-  contador.textContent = "0";
-  mensaje.textContent = "";
-  mensaje.className = "mensaje";
-  listaHistorial.innerHTML = "";
-  inputNumero.value = "";
+  counter.textContent = "0";
+  message.textContent = "";
+  message.className = "mensaje";
+  listRecord.innerHTML = "";
+  inputNumber.value = "";
 });

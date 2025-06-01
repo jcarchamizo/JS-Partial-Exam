@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Juego: Adivina el Número</title>
+  <title>Game: Guess the Number</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🎯 Adivina el Número (1 a 100)</h1>
+  <h1>🎯 Guess the Number (1 to 100)</h1>
 
-  <form id="formulario">
-    <input type="number" id="inputNumero" min="1" max="100" placeholder="Introduce un número..." required>
-    <button type="submit">Adivinar</button>
+  <form id="form">
+    <input type="number" id="inputNumber" min="1" max="100" placeholder="Enter a number..." required>
+    <button type="submit">Guess</button>
   </form>
 
-  <div id="mensaje" class="mensaje"></div>
+  <div id="message" class="message"></div>
 
-  <p><strong>Intentos:</strong> <span id="contador">0</span> / 10</p>
+  <p><strong>Attempts:</strong> <span id="counter">0</span> / 10</p>
 
-  <p><strong>Historial:</strong></p>
-  <ul id="historial"></ul>
+  <p><strong>Record:</strong></p>
+  <ul id="record"></ul>
 
-  <button id="reiniciar">Reiniciar juego</button>
+  <button id="restart">Restart game</button>
 
   <script src="script.js"></script>
 </body>
