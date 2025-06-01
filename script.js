@@ -21,19 +21,19 @@ form.addEventListener("submit", function(event) {
 
   if (gameFinished) return;
 
-  const numberUser = parseInt(inputNumero.value);
+  const numberUser = parseInt(inputNumber.value);
   if (isNaN(numberUser) || numberUser < 1 || numberUser > 100) {
     showMessage("Enter a valid number between 1 and 100", "error");
     return;
   }
 
   attempts++;
-  contador.textContent = intentos;
+  counter.textContent = attempts;
   recordAttempts.push(numberUser);
   updateRecord();
 
   if (numberUser === numberSecret) {
-    showMessage(`Correct! The number was ${numeroSecreto}.`, "success");
+    showMessage(`Correct! The number was ${numberSecret}.`, "success");
     gameFinished = true;
   } else if (numberUser < numberSecret) {
     showMessage("Too low...", "error");
