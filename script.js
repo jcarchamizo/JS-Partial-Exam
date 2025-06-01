@@ -8,12 +8,12 @@ let gameFinished = false;
 let recordAttempts = [];
 
 // References to the DOM
-const form = document.getElementById("formulario");
-const inputNumber = document.getElementById("inputNumero");
-const message = document.getElementById("mensaje");
-const counter = document.getElementById("contador");
-const listRecord = document.getElementById("historial");
-const buttonRestart = document.getElementById("reiniciar");
+const form = document.getElementById("form");
+const inputNumber = document.getElementById("inputNumber");
+const message = document.getElementById("message");
+const counter = document.getElementById("counter");
+const listRecord = document.getElementById("record");
+const buttonRestart = document.getElementById("restart");
 
 // Event when submitting the form
 form.addEventListener("submit", function(event) {
